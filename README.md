@@ -28,7 +28,9 @@ Application complète de gestion de stock pour un magasin de produits informatiq
 
 ### 🎬 Démonstration
 
-https://github.com/imadev26/Evaluation_EX123/assets/YOUR_USER_ID/EX1.mp4
+https://github.com/imadev26/Evaluation_EX123/raw/main/EX1.mp4
+
+*[📥 Télécharger la vidéo](EX1.mp4) ou [▶️ Voir en ligne](https://github.com/imadev26/Evaluation_EX123/blob/main/EX1.mp4)*
 
 ### Fonctionnalités principales
 - ✅ **CRUD complet** sur Catégories, Produits, Commandes
@@ -70,7 +72,9 @@ Système de gestion de projets pour bureau d'études avec suivi des tâches et a
 
 ### 🎬 Démonstration
 
-https://github.com/imadev26/Evaluation_EX123/assets/YOUR_USER_ID/EX2.mp4
+https://github.com/imadev26/Evaluation_EX123/raw/main/EX2.mp4
+
+*[📥 Télécharger la vidéo](EX2.mp4) ou [▶️ Voir en ligne](https://github.com/imadev26/Evaluation_EX123/blob/main/EX2.mp4)*
 
 ### Fonctionnalités principales
 - ✅ **Gestion des projets** : Création, suivi, planification
@@ -113,7 +117,9 @@ Application sophistiquée pour gérer les citoyens et leurs relations matrimonia
 
 ### 🎬 Démonstration
 
-https://github.com/imadev26/Evaluation_EX123/assets/YOUR_USER_ID/EX3.mp4
+https://github.com/imadev26/Evaluation_EX123/raw/main/EX3.mp4
+
+*[📥 Télécharger la vidéo](EX3.mp4) ou [▶️ Voir en ligne](https://github.com/imadev26/Evaluation_EX123/blob/main/EX3.mp4)*
 
 ### Fonctionnalités principales
 - ✅ **Héritage JPA** : Stratégie JOINED (Personne → Homme/Femme)
