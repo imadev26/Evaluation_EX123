@@ -1,0 +1,195 @@
+╔═══════════════════════════════════════════════════════════════════════════════╗
+║                  APPLICATION DE GESTION DE STOCK                              ║
+║                    Magasin de Produits Informatiques                          ║
+╚═══════════════════════════════════════════════════════════════════════════════╝
+
+📁 STRUCTURE COMPLÈTE DU PROJET
+═══════════════════════════════════════════════════════════════════════════════
+
+Exercice_1/
+│
+├── 📄 pom.xml                           ✅ Configuré avec Hibernate + MySQL
+├── 📄 README.md                         ✅ Documentation complète
+├── 📄 GUIDE_DEMARRAGE.md               ✅ Guide de démarrage rapide
+├── 📄 TROUBLESHOOTING.md               ✅ Guide de dépannage
+├── 📄 STRUCTURE_PROJET.txt             ✅ Vue d'ensemble du projet
+├── 📄 .gitignore                        ✅ Fichiers à ignorer
+├── 📄 start-mysql.bat                   ✅ Script pour démarrer MySQL (Windows)
+├── 📄 start-mysql.ps1                   ✅ Script PowerShell pour MySQL
+│
+└── src/
+    ├── main/
+    │   ├── java/
+    │   │   └── ma/
+    │   │       └── projet/
+    │   │           │
+    │   │           ├── 📦 classes/                    [COUCHE PERSISTANCE]
+    │   │           │   ├── Categorie.java            ✅ Entité JPA
+    │   │           │   ├── Produit.java              ✅ Entité JPA + Requête nommée
+    │   │           │   ├── Commande.java             ✅ Entité JPA
+    │   │           │   └── LigneCommandeProduit.java ✅ Entité JPA (Table association)
+    │   │           │
+    │   │           ├── 📦 dao/                        [COUCHE DAO]
+    │   │           │   └── IDao.java                 ✅ Interface générique CRUD
+    │   │           │
+    │   │           ├── 📦 service/                    [COUCHE SERVICE]
+    │   │           │   ├── CategorieService.java     ✅ CRUD Categorie
+    │   │           │   ├── ProduitService.java       ✅ CRUD + Méthodes métier
+    │   │           │   ├── CommandeService.java      ✅ CRUD Commande
+    │   │           │   └── LigneCommandeService.java ✅ CRUD LigneCommande
+    │   │           │
+    │   │           ├── 📦 util/                       [UTILITAIRES]
+    │   │           │   └── HibernateUtil.java        ✅ Configuration Hibernate
+    │   │           │
+    │   │           └── 📦 test/                       [TESTS]
+    │   │               ├── TestApplication.java      ✅ Application interactive (Menu)
+    │   │               └── TestSimple.java           ✅ Tests automatiques
+    │   │
+    │   └── resources/
+    │       └── application.properties                ✅ Configuration BD MySQL
+    │
+    └── test/
+        └── java/
+            └── org/example/
+                └── AppTest.java                      (Test JUnit original)
+
+
+═══════════════════════════════════════════════════════════════════════════════
+🎯 FONCTIONNALITÉS IMPLÉMENTÉES
+═══════════════════════════════════════════════════════════════════════════════
+
+✅ 1. COUCHE PERSISTANCE
+   ├─ Entité Categorie (id, code, libelle)
+   ├─ Entité Produit (id, reference, prix, categorie)
+   ├─ Entité Commande (id, date)
+   └─ Entité LigneCommandeProduit (id, produit, commande, quantite)
+
+✅ 2. CONFIGURATION
+   ├─ HibernateUtil : Gestion de SessionFactory
+   ├─ application.properties : Paramètres BD
+   └─ Relations JPA : @OneToMany, @ManyToOne
+
+✅ 3. COUCHE SERVICE
+   ├─ Interface IDao<T> générique
+   ├─ CategorieService : CRUD complet
+   ├─ CommandeService : CRUD complet
+   ├─ LigneCommandeService : CRUD complet
+   └─ ProduitService : CRUD + Méthodes spécifiques
+
+✅ 4. MÉTHODES SPÉCIFIQUES (ProduitService)
+   ├─ afficherProduitsParCategorie()
+   ├─ afficherProduitsCommandesEntreDates()
+   ├─ afficherProduitsParCommande()          [Format spécifique énoncé]
+   └─ afficherProduitsAvecPrixSuperieurA100() [Requête nommée]
+
+✅ 5. PROGRAMMES DE TEST
+   ├─ TestSimple : Exécution automatique de tous les tests
+   └─ TestApplication : Menu interactif pour tester les fonctionnalités
+
+
+═══════════════════════════════════════════════════════════════════════════════
+🗄️ MODÈLE DE DONNÉES
+═══════════════════════════════════════════════════════════════════════════════
+
+   ┌─────────────────┐
+   │   CATEGORIE     │
+   │─────────────────│      1        *
+   │ • id            │◄────────────────┐
+   │ • code          │                 │
+   │ • libelle       │                 │
+   └─────────────────┘                 │
+                                       │
+   ┌─────────────────┐                 │
+   │    PRODUIT      │─────────────────┘
+   │─────────────────│
+   │ • id            │
+   │ • reference     │        *
+   │ • prix          │◄───────────────┐
+   │ • categorie_id  │                │
+   └─────────────────┘                │
+                                      │
+   ┌──────────────────────┐           │
+   │ LIGNE_COMMANDE_PROD  │───────────┘
+   │──────────────────────│
+   │ • id                 │
+   │ • produit_id         │        *
+   │ • commande_id        │◄────────────┐
+   │ • quantite           │             │
+   └──────────────────────┘             │
+                                        │
+   ┌─────────────────┐                  │
+   │    COMMANDE     │──────────────────┘
+   │─────────────────│         1
+   │ • id            │
+   │ • date          │
+   └─────────────────┘
+
+
+═══════════════════════════════════════════════════════════════════════════════
+🚀 COMMANDES POUR LANCER L'APPLICATION
+═══════════════════════════════════════════════════════════════════════════════
+
+1️⃣  Installer les dépendances :
+    mvn clean install
+
+2️⃣  Lancer les tests automatiques (recommandé) :
+    mvn exec:java -Dexec.mainClass="ma.projet.test.TestSimple"
+
+3️⃣  Lancer l'application interactive :
+    mvn exec:java -Dexec.mainClass="ma.projet.test.TestApplication"
+
+
+═══════════════════════════════════════════════════════════════════════════════
+📊 DONNÉES DE TEST INITIALISÉES
+═══════════════════════════════════════════════════════════════════════════════
+
+CATÉGORIES (3) :
+  • ORD - Ordinateurs
+  • IMP - Imprimantes
+  • ACC - Accessoires
+
+PRODUITS (8) :
+  • ES12 - 120 DH  (Ordinateurs)
+  • ZR85 - 100 DH  (Ordinateurs)
+  • EE85 - 200 DH  (Imprimantes)
+  • AA45 - 150 DH  (Imprimantes)
+  • BB12 - 50 DH   (Accessoires)
+  • CC78 - 75 DH   (Accessoires)
+  • DD99 - 300 DH  (Ordinateurs)
+  • FF11 - 95 DH   (Accessoires)
+
+COMMANDES (4) :
+  • Commande 1 : 14/03/2013 → 3 produits (ES12 x7, ZR85 x14, EE85 x5)
+  • Commande 2 : 20/03/2013 → 2 produits (AA45 x3, DD99 x2)
+  • Commande 3 : 25/03/2013 → 2 produits (BB12 x10, CC78 x8)
+  • Commande 4 : 10/04/2013 → 2 produits (ES12 x5, EE85 x3)
+
+
+═══════════════════════════════════════════════════════════════════════════════
+🎓 TECHNOLOGIES UTILISÉES
+═══════════════════════════════════════════════════════════════════════════════
+
+  ☕ Java 8+
+  🔧 Maven (Build & Dependency Management)
+  🗄️ Hibernate 5.6.15 (ORM)
+  🐬 MySQL 8.0 (Base de données)
+  📝 JPA Annotations
+  🧪 JUnit 4.13.2 (Tests)
+
+
+═══════════════════════════════════════════════════════════════════════════════
+✨ PROJET COMPLÉTÉ AVEC SUCCÈS !
+═══════════════════════════════════════════════════════════════════════════════
+
+  ✅ Toutes les exigences de l'énoncé ont été implémentées
+  ✅ Architecture en couches respectée
+  ✅ Pattern DAO implémenté
+  ✅ Code bien structuré et commenté
+  ✅ Tests fonctionnels fournis
+  ✅ Documentation complète
+
+  📚 Consultez README.md pour la documentation détaillée
+  🚀 Consultez GUIDE_DEMARRAGE.md pour démarrer rapidement
+
+═══════════════════════════════════════════════════════════════════════════════
+

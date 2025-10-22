@@ -1,0 +1,112 @@
+╔═══════════════════════════════════════════════════════════════════════════════╗
+║                      🚀 DÉMARRAGE RAPIDE - 3 ÉTAPES                          ║
+╚═══════════════════════════════════════════════════════════════════════════════╝
+
+📌 ERREUR ACTUELLE
+════════════════════════════════════════════════════════════════════════════════
+
+Vous avez reçu cette erreur :
+  ❌ "Communications link failure"
+  ❌ "Connection refused: connect"
+
+Cela signifie que MySQL n'est PAS démarré sur votre machine.
+
+
+✅ SOLUTION EN 3 ÉTAPES
+════════════════════════════════════════════════════════════════════════════════
+
+ÉTAPE 1 : DÉMARRER MYSQL
+─────────────────────────────────────────────────────────────────────────────────
+
+Windows :
+  1. Clic droit sur le fichier : start-mysql.bat
+  2. Sélectionnez "Exécuter en tant qu'administrateur"
+  3. Attendez le message de succès
+
+OU dans PowerShell (en tant qu'administrateur) :
+  net start MySQL80
+
+
+ÉTAPE 2 : VÉRIFIER LA CONNEXION
+─────────────────────────────────────────────────────────────────────────────────
+
+Ouvrez PowerShell et tapez :
+  sc query MySQL80
+
+Vous devriez voir : STATE : RUNNING
+
+
+ÉTAPE 3 : CONFIGURER LE MOT DE PASSE (SI NÉCESSAIRE)
+─────────────────────────────────────────────────────────────────────────────────
+
+Ouvrez : src\main\resources\application.properties
+
+Modifiez la ligne :
+  db.password=
+
+Remplacez par votre mot de passe MySQL :
+  db.password=votre_mot_de_passe
+
+
+🚀 LANCER L'APPLICATION
+════════════════════════════════════════════════════════════════════════════════
+
+Une fois MySQL démarré, lancez :
+
+  mvn exec:java -Dexec.mainClass="ma.projet.test.TestSimple"
+
+Vous devriez voir :
+  ✓ Connexion à la base de données réussie !
+  ✓ 3 catégories créées
+  ✓ 8 produits créés
+  ✓ 4 commandes créées
+
+
+📚 BESOIN D'AIDE ?
+════════════════════════════════════════════════════════════════════════════════
+
+  📖 TROUBLESHOOTING.md  → Guide de dépannage complet
+  📖 GUIDE_DEMARRAGE.md  → Guide de démarrage détaillé
+  📖 README.md           → Documentation complète du projet
+
+
+🔧 COMMANDES UTILES
+════════════════════════════════════════════════════════════════════════════════
+
+Démarrer MySQL :
+  net start MySQL80
+
+Arrêter MySQL :
+  net stop MySQL80
+
+Vérifier le statut :
+  sc query MySQL80
+
+Installer les dépendances Maven :
+  mvn clean install
+
+Compiler le projet :
+  mvn clean compile
+
+Lancer l'application interactive :
+  mvn exec:java -Dexec.mainClass="ma.projet.test.TestApplication"
+
+
+💡 ASTUCE
+════════════════════════════════════════════════════════════════════════════════
+
+Pour éviter de devoir démarrer MySQL manuellement à chaque fois :
+
+1. Ouvrez services.msc (Win + R, tapez "services.msc")
+2. Trouvez "MySQL80" dans la liste
+3. Clic droit → Propriétés
+4. Type de démarrage → "Automatique"
+5. Cliquez OK
+
+Maintenant MySQL démarrera automatiquement avec Windows !
+
+
+════════════════════════════════════════════════════════════════════════════════
+                        Bon développement ! 🎉
+════════════════════════════════════════════════════════════════════════════════
+
